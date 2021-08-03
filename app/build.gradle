@@ -1,0 +1,71 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+
+    defaultConfig {
+        applicationId Config.applicationId
+        versionCode Releases.versionCode
+        versionName Releases.javaVersionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dynamicFeatures = [Modules.featureHistoryScreen]
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(Modules.core)
+
+    implementation GooglePlay.core
+    implementation Tools.multidex
+    implementation AndroidX.appCompat
+
+    implementation Kotlin.kotlinStdlib
+    implementation Kotlin.coreKtx
+    implementation Kotlin.kotlinxCoroutinesCore
+    implementation Kotlin.kotlinxCoroutinesAndroid
+
+    implementation Design.material
+    implementation Design.constraintLayout
+
+    implementation Koin.koinAndroid
+    implementation Koin.koinAndroidxViewmodel
+
+    implementation Room.roomRuntime
+    implementation Room.roomKtx
+    kapt Room.roomCompiler
+
+    implementation Retrofit.retrofit
+    implementation Retrofit.converterGson
+    implementation Retrofit.adapterRxjava3
+    implementation Retrofit.loggingInterceptor
+
+    implementation Glide.glide
+    kapt Glide.compiler
+
+    testImplementation Testing.junit
+    androidTestImplementation Testing.androidxJunit
+    androidTestImplementation Testing.espressoCore
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

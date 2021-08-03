@@ -1,0 +1,4 @@
+rootProject.name = "skyengdictionary"
+include ':app'
+include ':core'
+include ':historyScreen'
