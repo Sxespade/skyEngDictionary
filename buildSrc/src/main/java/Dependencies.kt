@@ -10,7 +10,7 @@ object Config {
     const val buildToolsVersion = "29.0.2"
 
     const val applicationId = "ru.gressor.skyengdictionary"
-    const val minSdkVersion = 21
+    const val minSdkVersion = 16
     const val targetSdkVersion = 29
 
     val javaVersion = JavaVersion.VERSION_1_8

@@ -6,12 +6,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion Config.compileSdkVersion
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId Config.applicationId
-        versionCode Releases.versionCode
-        versionName Releases.javaVersionName
+        applicationId "com.example.myapplication"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
